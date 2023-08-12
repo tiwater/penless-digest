@@ -1,0 +1,8 @@
+{
+  "title": { "message": "Penless Digest" },
+  "description": { "message": "Create a digest list for current page" },
+  "name": { "message": "Create a digest list for current page" },
+  "digest": { "message": "Digest" },
+  "copy": { "message": "Copy to Clipboard"},
+  "loadingText": { "message": "Digesting... It will take quite a few seconds." }
+}

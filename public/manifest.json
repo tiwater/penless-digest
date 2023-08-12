@@ -1,16 +1,18 @@
 {
   "manifest_version": 3,
-  "name": "My Extension",
-  "version": "1.0.0",
-  "description": "A simple Chrome extension.",
+  "name": "__MSG_title__",
+  "short_name": "penless-digest",
+  "version": "2.0.0",
+  "description": "__MSG_description__",
   "icons": {
-    "16": "logo192.png",
-    "48": "logo192.png",
-    "128": "logo192.png"
+    "64": "images/logo.png"
   },
+  "default_locale": "en",
   "background": {
     "service_worker": "./static/js/background.js"
   },
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["https://demo.penless.ai/*"],
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
@@ -18,7 +20,7 @@
     }
   ],
   "action": {
+    "default_title": "__MSG_title__",
     "default_popup": "index.html"
-  },
-  "permissions": ["storage", "tabs", "activeTab"]
+  }
 }

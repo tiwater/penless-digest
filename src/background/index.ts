@@ -1,44 +1,44 @@
-import { runtime, storage } from 'webextension-polyfill'
-import { getCurrentTab } from '../helpers/tabs'
+import { runtime, tabs } from 'webextension-polyfill';
 
-type Message = {
-  from: string
-  to: string
-  action: string
-}
-
-// async function getCurrentTab() {
-//   const list = await tabs.query({ active: true, currentWindow: true })
-//
-//   return list[0]
-// }
-
-async function incrementStoredValue(tabId: string) {
-  const data = await storage.local.get(tabId)
-  const currentValue = data?.[tabId] ?? 0
-
-  return storage.local.set({ [tabId]: currentValue + 1 })
-}
-
-export async function init() {
-  await storage.local.clear()
-
-  runtime.onMessage.addListener(async (message: Message) => {
-    if (message.to === 'background') {
-      console.log('background handled: ', message.action)
-
-      const tab = await getCurrentTab()
-      const tabId = tab.id
-
-      if (tabId) {
-        return incrementStoredValue(tabId.toString())
-      }
-    }
-  })
-}
+declare var chrome: any;
 
 runtime.onInstalled.addListener(() => {
-  init().then(() => {
-    console.log('[background] loaded ')
-  })
-})
+  console.log('[background] loaded ');
+});
+
+runtime.onMessage.addListener(async (request, _, sendResponse) => {
+  if (request.type === 'digest') {
+    console.log('[background] digest', request);
+    const foundTabs = await tabs.query({ active: true, currentWindow: true });
+    if (foundTabs.length === 0 || !foundTabs[0].id) {
+      console.error('No active tab found');
+      return false;
+    }
+
+    tabs
+      .executeScript(foundTabs[0].id, { file: 'content.js' })
+      .then(() => {
+        tabs
+          .sendMessage(foundTabs[0].id as number, { type: 'get_content' })
+          .then(response => {
+            fetch('https://demo.penless.ai/api/summarize-page', {
+              method: 'POST',
+              body: JSON.stringify({
+                text: response,
+              }),
+              headers: { 'Content-Type': 'application/json' },
+            })
+              .then(response => response.json())
+              .then(digest => {
+                console.log('digest result data', digest.summary);
+                runtime.sendMessage({ type: 'digest_result', result: digest.summary });
+              })
+              .catch(error => console.error(error));
+          })
+          .catch(error => console.error(error));
+      })
+      .catch(error => console.error(error));
+
+    return true; // Will respond asynchronously
+  }
+});

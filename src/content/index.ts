@@ -1,29 +1,12 @@
 import { runtime } from 'webextension-polyfill'
 
-console.log('[content] loaded ')
+console.log('[content] loaded ');
 
-type Listener = (event: MouseEvent) => void
-
-let count = 0
-
-function registerClickListener(listener: Listener) {
-  window.addEventListener('click', listener)
-
-  // step 2
-  return function cleanup() {
-    window.removeEventListener('click', listener)
+runtime.onMessage.addListener(function(request, sender, sendResponse) {
+  if (request.type === 'get_content') {
+    const content = document.body.innerText;
+    console.log('[content] get_content', content.substring(0, 1024));
+    (sendResponse as (response: any) => void)(content);
   }
-}
-
-async function countClicks() {
-  count++
-  console.log('click(): ', count)
-  // step 2
-  return runtime.sendMessage({ from: 'content', to: 'background', action: 'click' })
-}
-
-export function init() {
-  registerClickListener(countClicks)
-}
-
-init()
+  return true;
+});

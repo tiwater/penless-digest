@@ -1,0 +1,8 @@
+{
+  "title": { "message": "Penless Digest - 网页摘要" },
+  "description": { "message": "为当前页面生成摘要列表。" },
+  "name": { "message": "为当前页面生成摘要列表。"},
+  "digest": { "message": "摘要" },
+  "copy": { "message": "拷贝内容"},
+  "loadingText": { "message": "正在生成摘要... 时间稍长，请耐心等待。" }
+}
