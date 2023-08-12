@@ -22,11 +22,10 @@ const CopyButton = ({ onCopy: _onCopy }: any) => {
 
   return (
     <div
-      id="copy"
       onClick={onCopy}
-      className="w-7 h-7 rounded-full cursor-pointer hover:text-primary hover:bg-primary/10 flex items-center justify-center"
+      className="btn btn-circle btn-sm btn-ghost"
       data-tooltip-id="digest-tooltip"
-      data-tooltip-content={getLocalString('copy')}
+      data-tooltip-content={getLocalString(copied ? 'copied' : 'copy')}
     >
       <CopyIcon className="pointer-events-none w-4 h-4" />
     </div>

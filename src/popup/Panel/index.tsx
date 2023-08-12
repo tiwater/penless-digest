@@ -54,9 +54,9 @@ const Panel = () => {
 
   return (
     <div className="flex flex-col w-96 h-128 bg-base-100 border border-base-200 dark:bg-gray-700 dark:border-gray-600 gap-2">
-      <Toolbar onCopy={onCopy} />
+      <Toolbar onCopy={onCopy} onDigest={onDigest} digesting={digesting} />
       {content ? (
-        <ReactMarkdown remarkPlugins={[gfm]} className="w-full h-full p-2">
+        <ReactMarkdown remarkPlugins={[gfm]} className="w-full h-full p-2 overflow-y-auto">
           {content}
         </ReactMarkdown>
       ) : (
@@ -65,7 +65,7 @@ const Panel = () => {
             <div className="text-primary loading loading-bars" />
             <div data-i18n="loadingText">Loading</div>
           </div>
-          <button data-i18n="digest" onClick={onDigest} className={clsx({ hidden: digesting }, 'btn btn-primary')}>
+          <button data-i18n="digest" onClick={onDigest} className={clsx({ hidden: digesting }, 'btn btn-primary px-4')}>
             Digest
           </button>
         </div>
