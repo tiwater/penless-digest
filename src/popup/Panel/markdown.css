@@ -1,0 +1,107 @@
+.popup-container {
+  font-size: 14px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.popup-container h1,
+.popup-container h2,
+.popup-container h3,
+.popup-container h4,
+.popup-container h5,
+.popup-container h6 {
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.popup-container h1 {
+  font-size: 1.5em;
+}
+
+.popup-container h2 {
+  font-size: 1.2em;
+}
+
+.popup-container h3 {
+  font-size: 1.1em;
+}
+
+.popup-container h4 {
+  font-size: 1em;
+}
+
+.popup-container h5 {
+  font-size: 0.83em;
+}
+
+.popup-container h6 {
+  font-size: 0.67em;
+}
+
+.popup-container p {
+  margin: 10px 0;
+}
+
+.popup-container code {
+  font-family: monospace;
+  background-color: #f8f8f8;
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+
+.popup-container pre {
+  font-family: monospace;
+  background-color: #f8f8f8;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+.popup-container blockquote {
+  margin: 10px 0;
+  padding-left: 10px;
+  border-left: 3px solid #ddd;
+}
+
+.popup-container ul,
+.popup-container ol {
+  padding-left: 20px;
+}
+
+.popup-container img {
+  max-width: 100%;
+}
+
+.popup-container a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+.popup-container a:hover {
+  text-decoration: underline;
+}
+
+.popup-container ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.popup-container ul ul {
+  list-style-type: circle;
+}
+
+.popup-container ul ul ul {
+  list-style-type: square;
+}
+
+.popup-container ol {
+  list-style-type: decimal;
+  padding-left: 20px;
+}
+
+.popup-container ol ol {
+  list-style-type: lower-alpha;
+}
+
+.popup-container ol ol ol {
+  list-style-type: lower-roman;
+}

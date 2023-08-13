@@ -1,7 +1,11 @@
-import { tabs } from 'webextension-polyfill'
-
-export async function getCurrentTab() {
-  const list = await tabs.query({ active: true, currentWindow: true })
-
-  return list[0]
+export function getCurrentTab() {
+  return new Promise<chrome.tabs.Tab[]>((resolve, reject) => {
+    chrome.tabs.query({ active: true }, (tabs) => {
+      if (chrome.runtime.lastError) {
+        reject(new Error(chrome.runtime.lastError.message));
+        return;
+      }
+      resolve(tabs);
+    });
+  });
 }

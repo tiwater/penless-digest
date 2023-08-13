@@ -12,6 +12,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    "types": ["react", "webextension-polyfill", "chrome"],
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx"

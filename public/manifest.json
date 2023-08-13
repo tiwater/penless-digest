@@ -11,7 +11,7 @@
   "background": {
     "service_worker": "./static/js/background.js"
   },
-  "permissions": ["activeTab", "scripting"],
+  "permissions": ["storage", "tabs", "activeTab", "scripting"],
   "host_permissions": ["https://demo.penless.ai/*"],
   "content_scripts": [
     {
@@ -20,6 +20,7 @@
     }
   ],
   "action": {
+    "service_worker": "./static/js/background.js",
     "default_title": "__MSG_title__",
     "default_popup": "index.html"
   }

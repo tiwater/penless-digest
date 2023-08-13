@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.popup-container {
+  /* ... your existing styles ... */
+  scrollbar-width: thin; /* Set the width of the scrollbar */
+  scrollbar-color: #4a5568 transparent; /* Set the color of the scrollbar thumb and track */
+}
+
+.popup-container::-webkit-scrollbar {
+  background-color: transparent; /* Set the background color of the scrollbar */
+  width: 4px; /* Set the width of the scrollbar */
+}
+
+.popup-container::-webkit-scrollbar-thumb {
+  background-color: #4a5568; /* Set the color of the scrollbar thumb */
+  border-radius: 9999px; /* Add rounded corners to the scrollbar thumb */
+}
+
+.popup-container::-webkit-scrollbar-corner {
+  background-color: transparent; /* Set the background color of the scrollbar corner */
+}

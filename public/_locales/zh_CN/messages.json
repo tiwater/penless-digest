@@ -2,8 +2,12 @@
   "title": { "message": "Penless Digest - 网页摘要" },
   "description": { "message": "为当前页面生成摘要列表。" },
   "name": { "message": "为当前页面生成摘要列表。"},
-  "digest": { "message": "摘要" },
+  "digest": { "message": "生成摘要" },
+  "redigest": { "message": "重新生成摘要" },
   "copy": { "message": "拷贝内容"},
   "copied": { "message": "内容已拷贝至剪贴板!"},
-  "loadingText": { "message": "正在生成摘要... 时间稍长，请耐心等待。" }
+  "loadingText": { "message": "正在生成摘要... 时间稍长，请耐心等待。" },
+  "error": { "message": "出错了" },
+  "error_chromeTab": { "message": "忽略 chrome://* 标签页" },
+  "error_noActiveTab": { "message": "未找到活动标签页" }
 }

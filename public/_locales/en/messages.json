@@ -3,7 +3,11 @@
   "description": { "message": "Create a digest list for current page" },
   "name": { "message": "Create a digest list for current page" },
   "digest": { "message": "Digest" },
+  "redigest": { "message": "Redigest" },
   "copy": { "message": "Copy to Clipboard"},
   "copied": { "message": "Copied!"},
-  "loadingText": { "message": "Digesting... It will take quite a few seconds." }
+  "loadingText": { "message": "Digesting... It will take quite a few seconds." },
+  "error": { "message": "Error" },
+  "error_chrome_tab": { "message": "Ignoring chrome://* tab" },
+  "error_no_active_tab": { "message": "No active tab page." }
 }
