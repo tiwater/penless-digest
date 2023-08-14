@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getLocalString, localize } from '../../utils/i18n';
-import Toolbar from './Toolbar';
+import Toolbar from './components/Toolbar';
 import { Tooltip } from 'react-tooltip';
 import clsx from 'clsx';
 import ReactMarkdown from 'react-markdown';
@@ -8,7 +8,6 @@ import gfm from 'remark-gfm';
 import './markdown.css';
 import { cleanCachedDigest, getCachedDigest } from '../../utils/store';
 import { getCurrentTab } from '../../utils/tabs';
-import { on } from 'events';
 
 const Panel = () => {
   const [content, setContent] = useState('');

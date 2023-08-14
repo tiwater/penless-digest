@@ -31,7 +31,7 @@ chrome.runtime.onMessage.addListener((request, _, sendResponse) => {
                 files: ['./static/js/content.js'],
               })
               .then(() => {
-                console.log('get_content message', foundTabs[0].id);
+                console.log('get_content message', foundTabs[0].id, foundTabs[0].title);
                 return chrome.tabs.sendMessage(foundTabs[0].id as number, { type: 'get_content' });
               })
               .then((response: any) => {
@@ -39,12 +39,19 @@ chrome.runtime.onMessage.addListener((request, _, sendResponse) => {
                 return fetch('https://demo.penless.ai/api/summarize-page', {
                   method: 'POST',
                   body: JSON.stringify({
-                    text: response.data,
+                    text: response.data.slice(0, 10000),
+                    max_tokens: 4096,
                   }),
                   headers: { 'Content-Type': 'application/json' },
                 });
               })
-              .then(response => response.json())
+              .then(response => {
+                console.log('digest result', response);
+                if (!response.ok) {
+                  throw { success: false, type: 'digest_result', error: response.statusText};
+                }
+                return response.json();
+              })
               .then(digest => {
                 console.log('digest result data', digest.summary);
                 chrome.storage.local.set({ [pageCacheKey]: digest.summary });
@@ -53,7 +60,10 @@ chrome.runtime.onMessage.addListener((request, _, sendResponse) => {
           });
       })
       .then(result => sendResponse(result))
-      .catch(error => sendResponse(error));
+      .catch(error => {
+        console.error(error);
+        sendResponse(error);
+      });
 
     return true; // indicates we want to respond asynchronously
   }

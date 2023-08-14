@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { HiOutlineClipboard, HiOutlineClipboardCheck } from 'react-icons/hi';
-import { getLocalString } from '../../utils/i18n';
+import { getLocalString } from '../../../utils/i18n';
 
 const CopyButton = ({ onCopy: _onCopy }: any) => {
   const [copied, setCopied] = useState(false);

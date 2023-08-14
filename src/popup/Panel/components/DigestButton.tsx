@@ -1,5 +1,5 @@
 import { AiOutlineReload } from 'react-icons/ai';
-import { getLocalString } from '../../utils/i18n';
+import { getLocalString } from '../../../utils/i18n';
 import clsx from 'clsx';
 
 const DigestButton = ({ onDigest, digesting }: any) => {
