@@ -22,6 +22,8 @@ chrome.runtime.onMessage.addListener((request, _, sendResponse) => {
 
         const pageCacheKey = `pagecache-${foundTabs[0].url}`;
 
+        console.log('[background] getCachedDigest');
+
         return getCachedDigest(pageCacheKey)
           .then(pageCache => ({ success: true, type: 'digest_result', data: pageCache }))
           .catch(() => {
@@ -31,7 +33,7 @@ chrome.runtime.onMessage.addListener((request, _, sendResponse) => {
                 files: ['./static/js/content.js'],
               })
               .then(() => {
-                console.log('get_content message', foundTabs[0].id, foundTabs[0].title);
+                console.log('going to send get_content message', foundTabs[0].id, foundTabs[0].title);
                 return chrome.tabs.sendMessage(foundTabs[0].id as number, { type: 'get_content' });
               })
               .then((response: any) => {

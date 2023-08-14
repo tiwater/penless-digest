@@ -53,9 +53,6 @@ dependencies:
   web-vitals:
     specifier: ^3.4.0
     version: 3.4.0
-  webextension-polyfill:
-    specifier: ^0.10.0
-    version: 0.10.0
 
 devDependencies:
   '@types/chrome':
@@ -9330,10 +9327,6 @@ packages:
 
   /web-vitals@3.4.0:
     resolution: {integrity: sha512-n9fZ5/bG1oeDkyxLWyep0eahrNcPDF6bFqoyispt7xkW0xhDzpUBTgyDKqWDi1twT0MgH4HvvqzpUyh0ZxZV4A==}
-    dev: false
-
-  /webextension-polyfill@0.10.0:
-    resolution: {integrity: sha512-c5s35LgVa5tFaHhrZDnr3FpQpjj1BB+RXhLTYUxGqBVN460HkbM8TBtEqdXWbpTKfzwCcjAZVF7zXCYSKtcp9g==}
     dev: false
 
   /webidl-conversions@4.0.2:

@@ -6,7 +6,7 @@ export function getCachedDigest(key: string): Promise<string> {
         reject(new Error(chrome.runtime.lastError.message));
       } else if (!result || !result[key]) {
         console.log('getCachedDigest not found', result, key);
-        reject(new Error('not found'));
+        reject('Page cache not found');
       } else {
         console.log('getCachedDigest', result, key, result[key]);
         resolve(result[key]);
